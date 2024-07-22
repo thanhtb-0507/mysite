@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+  <h1>{% trans "Author:" %} {{ author }}</h1>
+  {{ author.date_of_birth }} - {% if author.date_of_death %} {{ author.date_of_death }} {% endif %}
+  <link rel="stylesheet" href="{% static 'catalog/css/styles.css' %}">
+  <div class="author-detail">
+    <h4>{% trans "Books" %}</h4>
+
+    {% for book in author.book_set.all %}
+      <hr>
+      <h5><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h5>
+      <p>
+          {{ book.summary }}
+      </p>
+    {% endfor %}
+  </div>
+{% endblock %}

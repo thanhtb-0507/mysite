@@ -101,7 +101,7 @@ class BookInstance(models.Model):
 		blank = True,
 		default = 'm',
 		help_text = _("Book availability"),
-	)
+    )
 
 	class Meta:
 		ordering = ["due_back"]
@@ -109,6 +109,17 @@ class BookInstance(models.Model):
 	def __str__(self):
 		"""String for representing the Model object."""
 		return f"{self.id} ({self.book.title})"
+
+    # def get_LOAN_STATUS(self, status):
+    #     match status:
+    #         case 'm':
+    #             return user_status[0]
+    #         case 'a':
+    #             print("Grass is green")
+    #         case _:
+
+    #     loan_status = self.LOAN_STATUS[]
+    #     return user_status[0]
 
 
 
