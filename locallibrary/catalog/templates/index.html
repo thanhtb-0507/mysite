@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base_generic.html" %}
 {% load i18n %}
 <!-- no need to load i18n again but... -->
@@ -16,4 +17,7 @@
     <li><strong>{% trans "Copies available:" %}</strong> {{ num_instances_available }}</li>
     <li><strong>{% trans "Authors:" %}</strong> {{ num_authors }}</li>
   </ul>
+  <p>
+    You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.
+  </p>
 {% endblock %}

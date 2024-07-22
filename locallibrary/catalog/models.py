@@ -4,17 +4,17 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 # Required for unique book instancesclass
-import uuid  
+import uuid
 
 # Used to generate URLs by reversing the URL patternsclass
-from django.urls import reverse 
+from django.urls import reverse
 
 
 
 class Genre(models.Model):
 	"""Model representing a book genre."""
 	name = models.CharField(
-		max_length = 200, 
+		max_length = 200,
 		help_text = _("Enter a book genre (e.g.Science Fiction)"),
 		)
 
@@ -30,27 +30,27 @@ class Book(models.Model):
 	title = models.CharField(max_length=200)
 
 	author = models.ForeignKey(
-		"Author", 
-		on_delete = models.SET_NULL, 
+		"Author",
+		on_delete = models.SET_NULL,
 		null = True,
 		# provide a human readable name
 		verbose_name = _("Author")
 		)
-	
+
 	summary = models.TextField(
-		max_length=1000, 
+		max_length=1000,
 		help_text = _("Enter a brief description of the book")
 		)
-	
+
 	isbn = models.CharField(
-		'ISBN', 
-		max_length = 13, 
+		'ISBN',
+		max_length = 13,
 		unique = True,
 		help_text = _('13 Character <ahref="https://www.isbn-international.org/content/what-isbn">ISBN number</a>')
 		)
-	
+
 	genre = models.ManyToManyField(
-		Genre, 
+		Genre,
 		help_text = _("Select a genre for this book"),
 		verbose_name = _("genre"),
 		)
@@ -73,21 +73,21 @@ class Book(models.Model):
 class BookInstance(models.Model):
 	"""Model representing a specific copy of a book (i.e. that can be borrowed from the library)."""
 	id = models.UUIDField(
-		primary_key = True, 
-		default = uuid.uuid4, 
+		primary_key = True,
+		default = uuid.uuid4,
 		help_text = _("Unique ID for this particular bookacross whole library")
 		)
 
 	book = models.ForeignKey(
-		"Book", 
+		"Book",
 		on_delete = models.RESTRICT,
 		verbose_name = _("Book"),
 		)
-	
+
 	imprint = models.CharField(max_length=200)
-	
+
 	due_back = models.DateField(null=True, blank=True)
-	
+
 	LOAN_STATUS = (
 		('m', _("Maintenance")),
 		('o', _("On loan")),
@@ -110,17 +110,6 @@ class BookInstance(models.Model):
 		"""String for representing the Model object."""
 		return f"{self.id} ({self.book.title})"
 
-    # def get_LOAN_STATUS(self, status):
-    #     match status:
-    #         case 'm':
-    #             return user_status[0]
-    #         case 'a':
-    #             print("Grass is green")
-    #         case _:
-
-    #     loan_status = self.LOAN_STATUS[]
-    #     return user_status[0]
-
 
 
 # Author model
@@ -128,9 +117,9 @@ class Author(models.Model):
 	"""Model representing an author."""
 
 	first_name = models.CharField(max_length=100)
-	
+
 	last_name = models.CharField(max_length=100)
-	
+
 	date_of_birth = models.DateField(null=True, blank=True)
 
 	date_of_death = models.DateField("Died", null=True, blank=True)
@@ -159,19 +148,19 @@ verbose_name = _("Author")
 	# provide a human readable name
 
 on_delete = models.<many many cheating>
-	# basicly it define the behavior of current or referenced data 
+	# basicly it define the behavior of current or referenced data
 	# when some deletion happen.
-	**ASCADE**     : emulate ON DELETE CASCADE, also make obj 
+	**ASCADE**     : emulate ON DELETE CASCADE, also make obj
 					 containing Fo.Key get reckt
 	**PROTECT**    : prevent get reckt, raise ProtectedError
-	**RESTRICT**   : raise RestrictedError, only allow deletion 
+	**RESTRICT**   : raise RestrictedError, only allow deletion
 					 if referenced also get reckt via CASCADE
 	**SET_NULL**   : if null == True then Fo.Key = null
 	**SET_DEFAULT**: need to set FroreignKey default value before use
-	**SET()**      : set ForeignKey as the value that passed 
-					 in SET() (variable, funct,…), usually callable 
+	**SET()**      : set ForeignKey as the value that passed
+					 in SET() (variable, funct,…), usually callable
 					 stuff to not invoke querries when import models.py
-	**DO_NOTHING** : nop, pass. Cause **IntegrityError** if backend 
-					 enforces, have to mannualy add an SQL 
+	**DO_NOTHING** : nop, pass. Cause **IntegrityError** if backend
+					 enforces, have to mannualy add an SQL
 					 **ON DELETE** constraint to the db field
 """

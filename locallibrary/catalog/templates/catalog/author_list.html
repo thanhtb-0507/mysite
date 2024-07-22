@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base_generic.html" %}
 {% load i18n %}
 
@@ -15,3 +16,21 @@
     <p>{% trans "There are no authors in the library." %}</p>
   {% endif %}
 {% endblock %}
+=======
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Author List</h1>
+  {% if author_list %}
+    <ul>
+      {% for author in author_list %}
+      <li>
+        <a href="{{ author.get_absolute_url }}">{{ author }} ({{ author.date_of_birth }} - {% if author.date_of_death %} {{ author.date_of_death }} {% endif %})</a>
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no authors in the library.</p>
+  {% endif %}
+{% endblock %}
+>>>>>>> 7d416d8 (Django Tutorial part6: Generic list and detail views)

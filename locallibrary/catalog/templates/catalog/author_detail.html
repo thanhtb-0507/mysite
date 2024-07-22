@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base_generic.html" %}
 {% load static %}
 {% load i18n %}
@@ -18,3 +19,23 @@
     {% endfor %}
   </div>
 {% endblock %}
+=======
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Author: {{ author }}</h1>
+  {{ author.date_of_birth }} - {% if author.date_of_death %} {{ author.date_of_death }} {% endif %}
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Books</h4>
+
+    {% for book in author.book_set.all %}
+      <hr>
+      <h5><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h5>
+      <p>
+          {{ book.summary }}
+      </p>
+    {% endfor %}
+  </div>
+{% endblock %}
+>>>>>>> 7d416d8 (Django Tutorial part6: Generic list and detail views)

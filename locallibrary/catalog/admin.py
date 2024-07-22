@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 from .models import Author, Genre, Book, BookInstance
 
-# Using @admin.register is equivelent of admin.site.register() 
+# Using @admin.register is equivelent of admin.site.register()
 # admin.site.register(Book)
 # admin.site.register(...)
 
@@ -16,15 +16,15 @@ from .models import Author, Genre, Book, BookInstance
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
 	list_display = (
-		"last_name", 
-		"first_name", 
-		"date_of_birth", 
+		"last_name",
+		"first_name",
+		"date_of_birth",
 		"date_of_death"
 	)
-	
+
 	fields = [
-		"first_name", 
-		"last_name", 
+		"first_name",
+		"last_name",
 		("date_of_birth", "date_of_death")
 	]
 
@@ -38,10 +38,10 @@ class BooksInstanceInline(admin.TabularInline):
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
 	list_display = ("title", "author", "display_genre")
-	
+
 	# new code of 4.4 added here:
 	inlines = [BooksInstanceInline]
-	
+
 
 @admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):

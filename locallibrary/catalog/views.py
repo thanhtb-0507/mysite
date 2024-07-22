@@ -10,7 +10,6 @@ from catalog.constants import LOAN_STATUS, ITEMS_PER_PAGE
 # Function definition:
 def index(request):
     """View function for home page of site"""
-
     # Generate counts of some of the main objects
     num_books = Book.objects.count()
     num_instances = BookInstance.objects.count()
@@ -20,6 +19,12 @@ def index(request):
 
     # the 'all()' is implied by default.
     num_authors = Author.objects.count()
+
+    # Number of visits to this view, as counted in the session variable.
+    # If no num_visists exsist previously, set it to default '0'
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+    print(num_visits)
 
     context = {
         "num_books" : num_books,
@@ -85,3 +90,4 @@ class AuthorDetailView(generic.DetailView):
     paginate_by = ITEMS_PER_PAGE
     # need to research about .constants
     # miss the .h, define <> <>, compiler T_T
+
