@@ -20,12 +20,19 @@ def index(request):
 	
 	# the 'all()' is implied by default.
 	num_authors = Author.objects.count()
+
+	# Number of visits to this view, as counted in the session variable.
+	# If no num_visists exsist previously, set it to default '0'
+	num_visits = request.session.get('num_visits', 0)
+	request.session['num_visits'] = num_visits + 1
+	print(num_visits)
 	
 	context = {
 		"num_books" : num_books,
 		"num_instances" : num_instances,
 		"num_instances_available" : num_instances_available,
 		"num_authors" : num_authors,
+		'num_visits': num_visits,
 	}
 	
 	# Render the HTML template index.html with the data in the context variable
