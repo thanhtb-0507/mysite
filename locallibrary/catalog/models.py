@@ -1,5 +1,14 @@
 from django.db import models
 
+from django.contrib.auth.models import User
+# from django.conf import settings
+
+# Used to generate URLs by reversing the URL patternsclass 
+from django.urls import reverse 
+
+from datetime import date
+
+
 # Create your models here.
 
 class Genre(models.Model):
@@ -11,8 +20,7 @@ class Genre(models.Model):
 		return self.name
 
 # Book model
-from django.urls import reverse 
-# Used to generate URLs by reversing the URL patternsclass 
+
 
 class Book(models.Model):
 	"""Model representing a book (but not a specific copy of a book)."""
@@ -53,15 +61,20 @@ class BookInstance(models.Model):
 	"""Model representing a specific copy of a book (i.e. that can be borrowed from the library)."""
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, 
 		help_text="Unique ID for this particular bookacross whole library")
+	
 	book = models.ForeignKey("Book", on_delete=models.RESTRICT)
+	
 	imprint = models.CharField(max_length=200)
+	
 	due_back = models.DateField(null=True, blank=True)
+	
 	LOAN_STATUS = (
 		('m', "Maintenance"),
 		('o', "On loan"),
 		('a', "Available"),
 		('r', "Reserved"),
 	)
+	
 	status = models.CharField(
 		max_length=1,
 		choices=LOAN_STATUS,
@@ -69,13 +82,28 @@ class BookInstance(models.Model):
 		default='m',
 		help_text="Book availability",
 	)
+	
+	borrower = models.ForeignKey(
+		User, 
+		on_delete=models.SET_NULL, 
+		null=True, 
+		blank=True,
+		help_text="Borrower",
+	)
 
 	class Meta:
 		ordering = ["due_back"]
+		permissions = (("can_mark_returned", "Set book as returned"),)
 
 	def __str__(self):
 		"""String for representing the Model object."""
 		return f"{self.id} ({self.book.title})"
+
+	@property
+	def is_overdue(self):
+		"""Determines if the book is overdue based on due date and current date."""
+		return bool(self.due_back and date.today() > self.due_back)
+
 
 # Author model
 class Author(models.Model):

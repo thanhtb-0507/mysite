@@ -25,7 +25,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
     # changes start here
+    
+    # catalog page
     path('catalog/', include('catalog.urls')),
     path('', RedirectView.as_view(url='catalog/')),
+    
+    # login page
+    path('accounts/', include('django.contrib.auth.urls')),
+    
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

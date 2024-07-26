@@ -5,6 +5,8 @@ from django.views import generic
 from catalog.models import Book, Author, BookInstance, Genre
 from django.shortcuts import get_object_or_404
 
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
 # Function definition:
@@ -121,3 +123,33 @@ class AuthorDetailView(generic.DetailView):
 	paginate_by = 10 
 	# need to research about .constants 
 	# miss the .h, define <> <>, compiler T_T
+
+# @login_required
+class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
+	"""Generic class-based view listing books on loan to current user."""
+	model = BookInstance
+	template_name = 'catalog/bookinstance_list_borrowed_user.html'
+	paginate_by = 10
+
+	def get_queryset(self):
+		return (
+			BookInstance.objects.filter(borrower=self.request.user)
+			.filter(status__exact='o')
+			.order_by('due_back')
+		)
+
+# also can use staff_member_required, template variable: user.is_staff
+# @login_required
+# @permission_required('catalog.can_mark_returned', raise_exception=True)
+class LibrarianLoanedBooksByUserListView(PermissionRequiredMixin,generic.ListView):
+	"""Generic class-based view listing books for librarian."""
+	permission_required = ('catalog.can_mark_returned',)
+	model = BookInstance
+	template_name = 'catalog/bookinstance_list_borrowed_librarian.html'
+	paginate_by = 10
+	
+	def get_queryset(self):
+		return (
+			BookInstance.objects.filter(status__exact='o').order_by('due_back')
+		)
+
