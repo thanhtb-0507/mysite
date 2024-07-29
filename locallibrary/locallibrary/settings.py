@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from dotenv import load_dotenv
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
 # Load environment variables from .env file
 load_dotenv()
@@ -26,11 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Access environment variables
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG')
-# DEBUG = True
 
 # Debug some how cause error so ...
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
-# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -54,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'locallibrary.urls'
@@ -124,6 +124,17 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Add the languages you want to support
+LANGUAGES = [
+    ("en", _("English")),
+    ('vi', _('Vietnamese')),
+    ("ja", _("Japanese")),
+    # Add other languages as needed
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

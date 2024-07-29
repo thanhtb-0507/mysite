@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-26 17:17+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: catalog/models.py:18
+msgid "Enter a book genre (e.g.Science Fiction)"
+msgstr "Nhập thể loại sách (vd: Khoa học viễn tưởng)"
+
+#: catalog/models.py:36
+msgid "Author"
+msgstr "Tác giả"
+
+#: catalog/models.py:41
+msgid "Enter a brief description of the book"
+msgstr "Nhập giới thiệu sách"
+
+#: catalog/models.py:48
+msgid ""
+"13 Character <ahref=\"https://www.isbn-international.org/content/what-"
+"isbn\">ISBN number</a>"
+msgstr ""
+"13 Character <ahref=\"https://www.isbn-international.org/content/what-"
+"isbn\">ISBN number</a>"
+
+#: catalog/models.py:53
+msgid "Select a genre for this book"
+msgstr "Chọn thể loại cho cuốn sách này"
+
+#: catalog/models.py:54
+msgid "genre"
+msgstr "thể loại"
+
+#: catalog/models.py:72
+msgid "Unique ID for this particular bookacross whole library"
+msgstr "ID của riêng cuốn sách này trong toàn bộ thư viện"
+
+#: catalog/models.py:78
+msgid "Book"
+msgstr "Sách"
+
+#: catalog/models.py:86
+msgid "Maintenance"
+msgstr "Đang bảo trì"
+
+#: catalog/models.py:87
+msgid "On loan"
+msgstr "Đang có người mượn"
+
+#: catalog/models.py:88
+msgid "Available"
+msgstr "Khả mượn"
+
+#: catalog/models.py:89
+msgid "Reserved"
+msgstr "Đã bị đặt trước"
+
+#: catalog/models.py:97
+msgid "Book availability"
+msgstr "Tình trạng sách"
+
+#: locallibrary/settings.py:129
+msgid "English"
+msgstr "Tiếng Anh"
+
+#: locallibrary/settings.py:130
+msgid "Vietnamese"
+msgstr "Tiếng Việt"
+
+#: locallibrary/settings.py:131
+msgid "Japanese"
+msgstr "Tiếng Nhật"
