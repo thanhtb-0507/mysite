@@ -23,6 +23,7 @@ class Genre(models.Model):
 		return self.name
 
 
+
 # Book model
 class Book(models.Model):
 	"""Model representing a book (but not a specific copy of a book)."""
@@ -60,7 +61,12 @@ class Book(models.Model):
 
 	def get_absolute_url(self):
 		"""Returns the url to access a detail record for this book."""
-		return reverse(	"book-detail", args=[str(self.id)])
+		return reverse("book-detail", args=[str(self.id)])
+
+	def display_genre(self):
+		"""Create a string for the Genre. This is require to display genre in Admin"""
+		return ','.join(genre.name for genre in self.genre.all()[:3])
+
 
 
 # BookInstance model
@@ -103,6 +109,7 @@ class BookInstance(models.Model):
 	def __str__(self):
 		"""String for representing the Model object."""
 		return f"{self.id} ({self.book.title})"
+
 
 
 # Author model
