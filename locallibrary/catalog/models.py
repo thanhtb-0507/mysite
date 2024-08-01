@@ -121,7 +121,7 @@ class Author(models.Model):
 	last_name = models.CharField(max_length=100)
 	
 	date_of_birth = models.DateField(null=True, blank=True)
-	
+
 	date_of_death = models.DateField("Died", null=True, blank=True)
 
 	class Meta:
@@ -164,4 +164,3 @@ on_delete = models.<many many cheating>
 					 enforces, have to mannualy add an SQL 
 					 **ON DELETE** constraint to the db field
 """
-

@@ -1,0 +1,6 @@
+# https://github.com/django/django/blob/3f880890699d4412cf23b59dba425111f62afb3a/.gitattributes
+# Normalize line endings to avoid spurious failures in the core test suite on Windows.
+*py text eol=lf
+*html text eol=lf
+*css text eol=lf
+*js text eol=lf
