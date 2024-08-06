@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-31 17:37+0700\n"
+"POT-Creation-Date: 2024-08-02 17:59+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Chat GPT <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,8 @@ msgid ""
 "13 Character <ahref=\"https://www.isbn-international.org/content/what-"
 "isbn\">ISBN number</a>"
 msgstr ""
-"13桁の <a href=\"https://www.isbn-international.org/content/what-isbn\">ISBN番号</a>"
+"13桁の <a href=\"https://www.isbn-international.org/content/what-isbn\">ISBN"
+"番号</a>"
 
 #: catalog/models.py:54
 msgid "Select a genre for this book"
@@ -89,39 +90,126 @@ msgstr "すべての本"
 msgid "All authors"
 msgstr "すべての著者"
 
+#: catalog/templates/base_generic.html:35
+msgid "previous"
+msgstr ""
+
+#: catalog/templates/base_generic.html:43
+msgid "next"
+msgstr ""
+
+#: catalog/templates/catalog/author_detail.html:6
+#: catalog/templates/catalog/book_detail.html:9
+#, fuzzy
+#| msgid "Authors:"
+msgid "Author:"
+msgstr "著者："
+
+#: catalog/templates/catalog/author_detail.html:10
+#, fuzzy
+#| msgid "Books:"
+msgid "Books"
+msgstr "本："
+
+#: catalog/templates/catalog/author_list.html:5
+#, fuzzy
+#| msgid "Authors:"
+msgid "Author List"
+msgstr "著者："
+
+#: catalog/templates/catalog/author_list.html:15
+msgid "There are no authors in the library."
+msgstr ""
+
+#: catalog/templates/catalog/book_detail.html:6
+msgid "Title:"
+msgstr ""
+
+#: catalog/templates/catalog/book_detail.html:12
+msgid "Summary:"
+msgstr ""
+
+#: catalog/templates/catalog/book_detail.html:13
+msgid "ISBN:"
+msgstr ""
+
+#: catalog/templates/catalog/book_detail.html:14
+msgid "Language:"
+msgstr ""
+
+#: catalog/templates/catalog/book_detail.html:15
+#, fuzzy
+#| msgid "genre"
+msgid "Genre:"
+msgstr "ジャンル"
+
+#: catalog/templates/catalog/book_detail.html:19
+#, fuzzy
+#| msgid "Copies:"
+msgid "Copies"
+msgstr "コピー："
+
+#: catalog/templates/catalog/book_detail.html:34
+msgid "Due to be returned:"
+msgstr ""
+
+#: catalog/templates/catalog/book_detail.html:36
+msgid "Imprint:"
+msgstr ""
+
+#: catalog/templates/catalog/book_list.html:5
+#, fuzzy
+#| msgid "Books:"
+msgid "Book List"
+msgstr "本："
+
+#: catalog/templates/catalog/book_list.html:16
+msgid "There are no books in the library."
+msgstr ""
+
 #: catalog/templates/index.html:6
 msgid "Local Library Home"
 msgstr "ローカルライブラリホーム"
 
-#: catalog/templates/index.html:8
+#: catalog/templates/index.html:7
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "    Welcome to LocalLibrary, a website developed by\n"
+#| "    <em>Mozilla Developer Network</em>!\n"
+#| "    "
 msgid ""
 "\n"
 "    Welcome to LocalLibrary, a website developed by\n"
 "    <em>Mozilla Developer Network</em>!\n"
-"    "
+"  "
 msgstr ""
 "\n"
 "    ローカルライブラリへようこそ。こちらは\n"
 "    <em>Mozilla Developer Network</em> によって開発されたウェブサイトです！\n"
 "    "
 
-#: catalog/templates/index.html:13
+#: catalog/templates/index.html:11
 msgid "Dynamic content"
 msgstr "動的コンテンツ"
 
-#: catalog/templates/index.html:16
+#: catalog/templates/index.html:12
+msgid "The library has the following record counts:"
+msgstr ""
+
+#: catalog/templates/index.html:14
 msgid "Books:"
 msgstr "本："
 
-#: catalog/templates/index.html:17
+#: catalog/templates/index.html:15
 msgid "Copies:"
 msgstr "コピー："
 
-#: catalog/templates/index.html:18
+#: catalog/templates/index.html:16
 msgid "Copies available:"
 msgstr "利用可能なコピー："
 
-#: catalog/templates/index.html:19
+#: catalog/templates/index.html:17
 msgid "Authors:"
 msgstr "著者："
 
